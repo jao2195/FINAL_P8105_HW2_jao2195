@@ -62,18 +62,19 @@ Write a paragraph about these data; you are encouraged to use inline R. Be sure 
 
 ```{r}
 
-mrtrash = read_excel("data/trashwheel.xlsx",) %>%  clean names %>% mutate(sportballs = as.interger(round(sportsballs)))
+mrtrash = read_excel("data/trashwheel.xlsx") %>%  
+  janitor::clean_names() %>% mutate(sportballs = as.interger(round(sportsballs)))
 
-profftrash = read_excel("data/trashwheel.xlsx",)
-no sports 
+profftrash = read_excel("data/trashwheel2.xlsx",sheet = "prof")
 
-New Variable 
+# Process Outline 
+#no sports 
 
-drop_na( , dumpster) 
+#Create New Variable 
 
-Cpy paste(right excel)
+#drop_na( , dumpster) 
 
-new data = bind_row( prof, mrt) 
+#new data = bind_row( proftrash, mrtrash) 
 
 ```
 
