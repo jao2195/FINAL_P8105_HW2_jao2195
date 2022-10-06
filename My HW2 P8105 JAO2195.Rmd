@@ -1,0 +1,12 @@
+---
+title: "My HW2 P8105 "
+author: "Jennifer Osei (jao2195)"
+date: "Due October 5, 2022"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+```
+
