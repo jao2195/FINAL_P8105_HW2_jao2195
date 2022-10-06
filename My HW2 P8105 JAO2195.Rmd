@@ -108,3 +108,30 @@ head(snp2)
 
 ```
 
+
+```{r}
+
+unemployment2 = read_csv("data/unemployment.csv")%>%
+janitor::clean_names() %>%
+
+pivot_longer(
+  jan:dec, names_to = "month", values_to = "unemployment rate") %>% 
+
+mutate(month = replace (month, month == 'jan', 1), 
+        month = replace (month, month == 'feb', 2),
+        month = replace (month, month == 'mar', 3),
+        month = replace (month, month == 'apr', 4),
+        month = replace (month, month == 'may', 5),
+        month = replace (month, month == 'jun', 6),
+        month = replace (month, month == 'jul', 7),
+        month = replace (month, month == 'aug', 8),
+        month = replace (month, month == 'sep', 9),
+        month = replace (month, month == 'oct', 10),
+        month = replace (month, month == 'nov', 11),
+        month = replace (month, month == 'dec', 12)) %>% 
+       
+  mutate ( month = as.integer(month)) %>% 
+  mutate(month = month.name[month]) %>%
+  relocate(year, .before = month)
+
+head(unemployment2)
