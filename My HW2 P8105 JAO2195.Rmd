@@ -87,7 +87,24 @@ mutate(year = as.integer(year), month = as.integer(month), day = as.integer(day)
   mutate(president = ifelse(prez_gop == '1', 'gop', 'dem'))%>% 
   select(-day, -prez_gop, -prez_dem) %>% 
   relocate(year, .before = month)
-View(pols_month2)
+
+head(pols_month2)
+
+```
+
+```{r}
+snp2 = read_csv("data/snp.csv")%>%
+janitor::clean_names() %>%
+separate(date,into = c("month", "day", "year")) %>%
+mutate(year = as.integer(year), month = as.integer(month), day = as.integer(day)) %>%
+
+  mutate(month = month.name[month]) %>%
+  mutate(newyear = ifelse(year < 22 , 2000, 1900)) %>% 
+  mutate(year = as.integer(newyear + year)) %>% 
+  relocate(year, .before = month) %>% 
+  select(-newyear, -day)
+
+head(snp2)
 
 ```
 
